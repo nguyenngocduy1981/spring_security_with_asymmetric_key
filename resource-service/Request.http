@@ -1,0 +1,44 @@
+### Authenticate then use https://jwt.io/ to check TOKEN
+POST http://localhost:8888/login
+Content-Type: application/json
+
+{
+  "username": "user0101",
+  "roles": "user"
+}
+> {% client.global.set("auth_token", response.body.access_token); %}
+
+### Authenticate then use https://jwt.io/ to check TOKEN
+POST http://localhost:8888/login
+Content-Type: application/json
+
+{
+  "username": "admin0101",
+  "roles": "admin"
+}
+
+> {% client.global.set("auth_token", response.body.json.access_token); %}
+
+### Authenticate then use https://jwt.io/ to check TOKEN
+POST http://localhost:8888/login
+Content-Type: application/json
+
+{
+  "username": "useradmin01",
+  "roles": "user,admin"
+}
+
+> {% client.global.set("auth_token", response.body.json.access_token); %}
+
+
+### Call with User role. Use token from Authentication-Service
+GET http://localhost:8080/hi/user
+Authorization: Bearer {{auth_token}}
+
+### Call with Admin role. Use token from Authentication-Service
+GET http://localhost:8080/hi/admin
+Authorization: Bearer {{auth_token}}
+
+### Call with User,Admin role. Use token from Authentication-Service
+GET http://localhost:8080/hi/user-admin
+Authorization: Bearer {{auth_token}}

@@ -1,0 +1,26 @@
+### Authenticate then use https://jwt.io/ to check TOKEN
+POST http://localhost:8888/login
+Content-Type: application/json
+
+{
+  "username": "user0101",
+  "roles": "user"
+}
+
+### Authenticate then use https://jwt.io/ to check TOKEN
+POST http://localhost:8888/login
+Content-Type: application/json
+
+{
+  "username": "admin0101",
+  "roles": "admin"
+}
+
+### Authenticate then use https://jwt.io/ to check TOKEN
+POST http://localhost:8888/login
+Content-Type: application/json
+
+{
+"username": "useradmin01",
+"roles": "user,admin"
+}
